@@ -54,11 +54,11 @@ cursor.execute("CREATE TABLE pedido("
 db.commit()
 
 cursor.execute("CREATE TABLE itens_pedido("
+               "item INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
                "id_ped INTEGER NOT NULL,"
-               "item INTEGER NOT NULL,"
                "id_pizza INTEGER,"
                "tamanho STRING (10),"
-               "CONSTRAINT PK_ITENSPEDIDO PRIMARY KEY(id_ped, item),"
+               "CONSTRAINT FK_ITENSPEDIDO_CODIGOPIZ FOREIGN KEY(id_ped) REFERENCES pedido(id_ped),"
                "CONSTRAINT FK_ITENSPEDIDO_CODIGOPIZ FOREIGN KEY(id_pizza) REFERENCES pizza(id_pizza))")
 
 db.commit()
