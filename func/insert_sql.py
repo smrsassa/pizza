@@ -1,10 +1,11 @@
 import database.db as data
 
 
-def in_user():
-    data.cursor.execute("SELECT * FROM pessoas")
-    print(data.cursor.fetchall())
-#tel_fixo,tel_cel,nome_cli,endereco,nr_end,complemento,bairro,cidade,uf,cep
+def in_user(tel_fixo,tel_cel,nome_cli,endereco,nr_end,complemento,bairro,cidade,uf,cep):
+    data.cursor.execute('INSERT INTO user(tel_fixo,tel_cel,nome_cli,endereco,nr_end,complemento,bairro,cidade,uf,cep) '
+                        'VALUES (?,?,?,?,?,?,?,?,?,?)',
+            (tel_fixo,tel_cel,nome_cli,endereco,nr_end,complemento,bairro,cidade,uf,cep))
+    data.db.commit()
 
 def in_pizza():
     data.cursor.execute("SELECT * FROM pessoas")
