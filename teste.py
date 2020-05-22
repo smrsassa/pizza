@@ -7,9 +7,10 @@ cursor = db.cursor()
 #db.commit()
 #cursor.execute("INSERT INTO pessoas VALUES ('Maria', 10, 'teste@teste.com')")
 #db.commit()
-cursor.execute("SELECT * FROM pessoas")
-print(cursor.fetchall())
+#cursor.execute("SELECT * FROM pessoas")
+#print(cursor.fetchall())
 
 #import sys
 #
 #sys.path.insert(1, "..")
+
