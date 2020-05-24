@@ -14,3 +14,12 @@ cursor = db.cursor()
 #
 #sys.path.insert(1, "..")
 
+import pandas as pd
+
+lista = {'nome': ['samuel', 'maria'],
+         'valor': [10, 20],
+         'pizza': ['vinhedo', 'teste']}
+
+listaDF = pd.DataFrame(lista)
+
+print(listaDF)

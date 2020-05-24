@@ -20,14 +20,12 @@ def index_menu():
     print("| [3] Produtos")
     print("| [4] Sair")
     print("|" + "==" * 19 + "|")
-    index_opc = input("Qual a opc: ")
-    index_opc = int(index_opc)
+    index_opc = int(input("Qual a opc: "))
     while True:
         if index_opc in [1, 2, 3, 4]:
             return index_opc
         else:
-            index_opc = input("Opc invalida! Digite novamente: ")
-            int(index_opc)
+            index_opc = int(input("Opc invalida! Digite novamente: "))
 
 #====== Atendimento =================================================
 def atendimento_index():
@@ -80,8 +78,65 @@ def pedido_index(id_user):
     insert.fechando_pedido(pizza, tam, id_user)
 #====== Pedidos =================================================
 
+def pedido():
+    print("|" + "==" * 19 + "|")
+    print("| [1] Pedidos em aberto:")
+    print("| [2] Ultimos Pedidos: ")
+    print("| [3] Voltar")
+    print("|" + "==" * 19 + "|")
+    index_opc = int(input("Qual a opc: "))
+    while True:
+        if index_opc in [1, 2, 3]:
+            return index_opc
+        else:
+            index_opc = int(input("Opc invalida! Digite novamente: "))
 
+def data_pedido():
+    from datetime import date
+    ano_atual = date.today()
+    ano_atual = ano_atual.year
 
+    print("| Digite a data para ver os pedidos que teve naquele dia:")
+    dia = int(input("Dia: "))
+    while True:
+        if dia > 31 or dia < 1:
+            dia = int(input("Dia invalido digite novamente: "))
+        else:
+            dia = str(dia)
+            break
 
+    mes = int(input("Mes: "))
+    while True:
+        if mes > 12 or mes < 1:
+            mes = int(input("Mes invalido digite novamente: "))
+        else:
+            mes = str(mes)
+            if len(mes) == 1:
+                mes = "0" + mes
+            break
+    ano = int(input("Ano: "))
+    while True:
+        if ano > ano_atual:
+            ano = int(input("Ano invalido digite novamente: "))
+        else:
+            ano = str(ano)
+            break
+
+    return (ano + "-" + mes + "-" + dia)
 
 #====== Produtos =================================================
+
+def produto():
+    print("|" + "==" * 19 + "|")
+    print("| [1] Inserir pizza")
+    print("| [2] Editar pizza")
+    print("| [3] Inativar pizza")
+    print("| [4] Vendas")
+    print("| [5] Voltar")
+    print("|" + "==" * 19 + "|")
+    index_opc = int(input("Qual a opc: "))
+    while True:
+        if index_opc in [1, 2, 3, 4, 5]:
+            return index_opc
+        else:
+            index_opc = int(input("Opc invalida! Digite novamente: "))
