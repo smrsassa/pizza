@@ -5,6 +5,7 @@ Arquivo....: main.py
 Autor......: Samuel Mayer Rufino
 """
 import database.db as data
+import include as inc
 
 
 def cls_clear():
@@ -66,17 +67,20 @@ def cadastra_cliente():
 def pedido_index(id_user):
     pizza = []
     tam = []
+
     string1 = "itens_pedido.id_ped = pedido.id_ped and pedido.id_user = {} and ".format(id_user)
     string2 = "itens_pedido.id_pizza = pizza.id_pizza ORDER BY item DESC LIMIT 3"
     string = string1 + string2
     data.cursor.execute("SELECT pizza.nome_pizza from itens_pedido, pedido, user, pizza WHERE " + string)
     pedido = data.cursor.fetchall()
+
     if pedido:
         print("| Ultimos pedidos do cliente: ")
         for item in pedido:
             print("| - {}".format(item[0]))
     else:
         print("| Esse cliente ainda não possui pedidos..")
+
     while True:
         idPizza = input("| Qual o ID da pizza desejada: ")
         pizza.append(idPizza)
@@ -158,7 +162,23 @@ def produto():
             index_opc = int(input("Opc invalida! Digite novamente: "))
 
 
-def in_pizza():
-    pass
+def inserir_pizza():
+    nome_pizza = input("| Nome da nova pizza: ")
+    ingredientes = input("| Ingredientes da nova pizza: ")
+    custo = input("| Preço: ")
+
+    inc.inSql.in_pizza(nome_pizza, ingredientes, custo)
+
+def editar_pizza():
+    id_pizza = input("| Id da pizza que deseja editar: ")
+    nome_pizza = input("| Nome da nova pizza: ")
+    ingredientes = input("| Ingredientes da nova pizza: ")
+    custo = input("| Preço: ")
+
+    inc.upSql.up_pizza(id_pizza, nome_pizza, ingredientes, custo)
 
 
+def inativar_pizza():
+    id_pizza = input("| Id da pizza que deseja INATIVAR: ")
+
+    inc.upSql.invalidar_pizza(id_pizza)

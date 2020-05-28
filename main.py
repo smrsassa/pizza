@@ -9,7 +9,7 @@ import include as inc
 
 inc.msg.cabecalho()
 
-#Mds em python não tem switch?????
+#Mds python não tem switch?????
 while True:
     #menu principal
     index_opc = inc.msg.index_menu()
@@ -19,6 +19,7 @@ while True:
         tel = inc.msg.atendimento_index()
 
         existe = inc.selSql.procura_cliente(tel)
+
         if existe:
             inc.msg.pedido_index(existe)
         else:
@@ -28,6 +29,7 @@ while True:
     elif index_opc == 2:
 
         opc = inc.msg.pedido()
+
         if opc == 1:
             inc.selSql.pedidos_aberto()
         elif opc == 2:
@@ -41,11 +43,11 @@ while True:
         opc = inc.msg.produto()
 
         if opc == 1:
-            pass
+            inc.msg.inserir_pizza()
         elif opc == 2:
-            pass
+            inc.msg.editar_pizza()
         elif opc == 3:
-            pass
+            inc.msg.inativar_pizza()
         elif opc == 4:
             inc.selSql.vendas()
         else:

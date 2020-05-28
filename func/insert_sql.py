@@ -5,7 +5,6 @@ Arquivo....: main.py
 Autor......: Samuel Mayer Rufino
 """
 import database.db as data
-import func.msg as msg
 
 
 def in_user(tel_fixo,tel_cel,nome_cli,endereco,nr_end,complemento,bairro,cidade,uf,cep):
@@ -92,3 +91,9 @@ def fechando_pedido(pizzas, tamanhos, cliente):
     for item in pizzas:
         print("| - {}".format(item[0]))
     print("|" + "==" * 19 + "|")
+
+
+def in_pizza(nome_pizza, ingredientes, custo):
+    data.cursor.execute("INSERT INTO pizza(data_criacao,nome_pizza,ingredientes,valor_custo) "
+                        "VALUES (date('now', 'localtime'),'{}','{}','{}')".format(nome_pizza, ingredientes, custo))
+    data.db.commit()
