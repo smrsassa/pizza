@@ -1,4 +1,11 @@
+"""
+Data.......: 17/05/2020
+Projeto....: pizza
+Arquivo....: main.py
+Autor......: Samuel Mayer Rufino
+"""
 import database.db as data
+
 
 def cls_clear():
     from os import system, name
@@ -7,11 +14,13 @@ def cls_clear():
     else:
         system("clear")
 
+
 def cabecalho():
     print("|" + "==" * 19 + "|")
     print("|      Bem Vindo ao Sistema da:        |")
     print("| MASTER-PIZZA’S ENTREGAS RAPIDAS LTDA |")
     print("|" + "==" * 19 + "|")
+
 
 def index_menu():
     print("|" + "==" * 19 + "|")
@@ -27,12 +36,14 @@ def index_menu():
         else:
             index_opc = int(input("Opc invalida! Digite novamente: "))
 
-#====== Atendimento =================================================
+
+# ====== Atendimento =================================================
 def atendimento_index():
     cls_clear()
     print("|" + "==" * 19 + "|")
     tel = str(input("Digite o numero do telefone: "))
     return tel
+
 
 def cadastra_cliente():
     print("|" + "==" * 19 + "|")
@@ -49,7 +60,8 @@ def cadastra_cliente():
     cep = input("CEP: ")
 
     from func.insert_sql import in_user
-    in_user(tel_fixo,tel_cel,nome_cli,endereco,nr_end,complemento,bairro,cidade,uf,cep)
+    in_user(tel_fixo, tel_cel, nome_cli, endereco, nr_end, complemento, bairro, cidade, uf, cep)
+
 
 def pedido_index(id_user):
     pizza = []
@@ -57,7 +69,7 @@ def pedido_index(id_user):
     string1 = "itens_pedido.id_ped = pedido.id_ped and pedido.id_user = {} and ".format(id_user)
     string2 = "itens_pedido.id_pizza = pizza.id_pizza ORDER BY item DESC LIMIT 3"
     string = string1 + string2
-    data.cursor.execute("SELECT pizza.nome_pizza from itens_pedido, pedido, user, pizza WHERE "+string)
+    data.cursor.execute("SELECT pizza.nome_pizza from itens_pedido, pedido, user, pizza WHERE " + string)
     pedido = data.cursor.fetchall()
     if pedido:
         print("| Ultimos pedidos do cliente: ")
@@ -76,7 +88,9 @@ def pedido_index(id_user):
 
     import func.insert_sql as insert
     insert.fechando_pedido(pizza, tam, id_user)
-#====== Pedidos =================================================
+
+
+# ====== Pedidos =================================================
 
 def pedido():
     print("|" + "==" * 19 + "|")
@@ -90,6 +104,7 @@ def pedido():
             return index_opc
         else:
             index_opc = int(input("Opc invalida! Digite novamente: "))
+
 
 def data_pedido():
     from datetime import date
@@ -124,7 +139,8 @@ def data_pedido():
 
     return (ano + "-" + mes + "-" + dia)
 
-#====== Produtos =================================================
+
+# ====== Produtos =================================================
 
 def produto():
     print("|" + "==" * 19 + "|")
@@ -140,3 +156,9 @@ def produto():
             return index_opc
         else:
             index_opc = int(input("Opc invalida! Digite novamente: "))
+
+
+def in_pizza():
+    pass
+
+
