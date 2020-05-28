@@ -83,11 +83,26 @@ def fechando_pedido(pizzas, tamanhos, cliente):
                         "WHERE itens_pedido.id_pizza = pizza.id_pizza and itens_pedido.id_ped = {}".format(id_pedido[0][0]))
     pizzas = data.cursor.fetchall()
 
+    opc_pagamento = int(input("| [1] Sim\n"
+                          "| [2] Não\n"
+                          "| Vai pagar com cartão? "))
+
+    while True:
+        if opc_pagamento == 1:
+            troco = 0
+            break
+        else:
+            valor = int(input("| Ex: 50\n"
+                              "| Qual o valor total das notas do cliente: "))
+            troco = valor - rela[0][3]
+            break
+
     print("|" + "==" * 19 + "|")
     print("| Numero do pedido: {}".format(rela[0][0]))
     print("| Data: {}".format(rela[0][1]))
     print("| Cliente: {}".format(rela[0][2]))
     print("| Total: R${}".format(rela[0][3]))
+    print("| Troco: R${}".format(troco))
     print("| Pizzas: ")
     for item in pizzas:
         print("| - {}".format(item[0]))

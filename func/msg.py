@@ -31,7 +31,7 @@ def index_menu():
     print("| [3] Produtos / Clientes")
     print("| [4] Sair")
     print("|" + "==" * 19 + "|")
-    index_opc = int(input("Qual a opc: "))
+    index_opc = int(input("| Qual a opc: "))
     while True:
         if index_opc in [1, 2, 3, 4]:
             return index_opc
@@ -85,9 +85,9 @@ def pedido_index(id_user):
     while True:
         idPizza = input("| Qual o ID da pizza desejada: ")
         pizza.append(idPizza)
-        tamanho = input("| [1]Normal\n[2]Media\n[3]Grande\n[4]Gigante\n Qual o tamanho da pizza desejada: ")
+        tamanho = input("| [1]Normal\n| [2]Media\n| [3]Grande\n| [4]Gigante\n| Qual o tamanho da pizza desejada: ")
         tam.append(tamanho)
-        cont = int(input("[1]Sim\n[2]Não\nMais algum pedido?"))
+        cont = int(input("| [1]Sim\n| [2]Não\n| Mais algum pedido?"))
         if cont == 2:
             break
 
