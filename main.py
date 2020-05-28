@@ -3,6 +3,8 @@ Data.......: 17/05/2020
 Projeto....: pizza
 Arquivo....: main.py
 Autor......: Samuel Mayer Rufino
+Descrição..: Esse arquivo tem o objetivo de unir todas as funcionalidades da aplicação
+a partir de funções
 """
 
 import include as inc

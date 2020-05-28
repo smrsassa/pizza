@@ -3,6 +3,7 @@ Data.......: 17/05/2020
 Projeto....: pizza
 Arquivo....: main.py
 Autor......: Samuel Mayer Rufino
+Descrição..: Esse arquivo contem funções que exibem mensages e menus para o usuario
 """
 import database.db as data
 import include as inc

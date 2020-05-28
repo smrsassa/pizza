@@ -3,6 +3,7 @@ Data.......: 17/05/2020
 Projeto....: pizza
 Arquivo....: main.py
 Autor......: Samuel Mayer Rufino
+Descrição..: Esse arquivo contem funções que realizam inserts no banco
 """
 import database.db as data
 
