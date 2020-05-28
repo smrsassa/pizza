@@ -22,3 +22,22 @@ def invalidar_pizza(id_pizza):
                         "SET data_inativacao = date('now', 'localtime') "
                         "WHERE id_pizza = '{}'".format(id_pizza))
     data.db.commit()
+
+
+def up_usuario(id_cliente, tel_fixo, tel_cel, nome_cli, endereco, nr_end, complemento, bairro, cidade, uf, cep):
+    data.cursor.execute("UPDATE user "
+                        "SET tel_fixo = '{}',"
+                        "tel_cel = '{}',"
+                        "nome_cli = '{}',"
+                        "endereco = '{}',"
+                        "nr_end = '{}',"
+                        "complemento = '{}',"
+                        "bairro = '{}',"
+                        "cidade = '{}',"
+                        "uf = '{}',"
+                        "cep = '{}' "
+                        "WHERE id_user = '{}'".format(tel_fixo, tel_cel, nome_cli, endereco,
+                                                    nr_end, complemento, bairro, cidade,
+                                                    uf, cep, id_cliente))
+
+    data.db.commit()

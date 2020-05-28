@@ -108,19 +108,30 @@ def ultimos_pedidos(data_asd):
 #====== Produtos =================================================
 def vendas():
     import pandas as pd
-    data.cursor.execute("SELECT pizza.nome_pizza, count(itens_pedido.id_pizza) as vendas "
+    data.cursor.execute("SELECT pizza.nome_pizza, count(itens_pedido.id_pizza) as vendas, itens_pedido.tamanho "
                         "FROM itens_pedido, pizza "
                         "WHERE itens_pedido.id_pizza = pizza.id_pizza "
-                        "group by itens_pedido.id_pizza ORDER BY pizza.nome_pizza")
+                        "group by itens_pedido.tamanho ORDER BY pizza.nome_pizza")
     rows = data.cursor.fetchall()
     pizza = []
     vendidos = []
+    tamanhos = []
     for row in rows:
         pizza.append(row[0])
         vendidos.append(row[1])
+        if row[2] == 1:
+            tamanhos.append('Normal')
+        elif row[2] == 2:
+            tamanhos.append('Média')
+        elif row[2] == 3:
+            tamanhos.append('Grande')
+        elif row[2] == 4:
+            tamanhos.append('Gigante')
+
 
     vendidosDIC = {'Pizza:': pizza,
-                   'Vendas': vendidos}
+                   'Vendas': vendidos,
+                   'Tamanhos': tamanhos}
 
     vendidosDF = pd.DataFrame(vendidosDIC)
 

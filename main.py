@@ -51,6 +51,8 @@ while True:
         elif opc == 3:
             inc.msg.inativar_pizza()
         elif opc == 4:
+            inc.msg.editar_usuario()
+        elif opc == 5:
             inc.selSql.vendas()
         else:
             pass

@@ -28,7 +28,7 @@ def index_menu():
     print("|" + "==" * 19 + "|")
     print("| [1] Atendimento")
     print("| [2] Pedidos")
-    print("| [3] Produtos")
+    print("| [3] Produtos / Clientes")
     print("| [4] Sair")
     print("|" + "==" * 19 + "|")
     index_opc = int(input("Qual a opc: "))
@@ -152,8 +152,9 @@ def produto():
     print("| [1] Inserir pizza")
     print("| [2] Editar pizza")
     print("| [3] Inativar pizza")
-    print("| [4] Vendas")
-    print("| [5] Voltar")
+    print("| [4] Editar clientes")
+    print("| [5] Vendas")
+    print("| [6] Voltar")
     print("|" + "==" * 19 + "|")
     index_opc = int(input("Qual a opc: "))
     while True:
@@ -183,3 +184,23 @@ def inativar_pizza():
     id_pizza = input("| Id da pizza que deseja INATIVAR: ")
 
     inc.upSql.invalidar_pizza(id_pizza)
+
+
+def editar_usuario():
+    id_cliente = input("| Id do cliente que deseja editar: ")
+    tel_fixo = input("| Telefone fixo: ")
+    tel_cel = input("| Telefone celular: ")
+    nome_cli = input("| Nome: ")
+    endereco = input("| Endereço: ")
+    nr_end = input("| Numero da casa: ")
+    complemento = input("| Complemento: ")
+    bairro = input("| Bairro: ")
+    cidade = input("| Cidade: ")
+    uf = input("| UF: ")
+    cep = input("| CEP: ")
+
+    inc.upSql.up_usuario(
+        id_cliente, tel_fixo, tel_cel, nome_cli, endereco, nr_end, complemento, bairro, cidade, uf, cep
+    )
+
+
