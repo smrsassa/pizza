@@ -16,6 +16,15 @@ def procura_cliente(tel):
     else:
         return num_row[0]
 
+
+def valida_pizza(id_pizza):
+    data.cursor.execute("SELECT * FROM pizza WHERE id_pizza = '{}' and data_inativacao like '%-%'".format(id_pizza))
+    num_row = data.cursor.fetchone()
+    if num_row is None:
+        return True
+    else:
+        return False
+
 #====== Pedidos =================================================
 def pedidos_aberto():
     import pandas as pd

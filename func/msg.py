@@ -84,12 +84,20 @@ def pedido_index(id_user):
 
     while True:
         idPizza = input("| Qual o ID da pizza desejada: ")
+
+        import func.select_slq as select
+        valida = select.valida_pizza(idPizza)
+        while not valida:
+            idPizza = input("| ID invalido, pizza inativada: ")
+            valida = select.valida_pizza(idPizza)
+
         pizza.append(idPizza)
         tamanho = input("| [1]Normal\n| [2]Media\n| [3]Grande\n| [4]Gigante\n| Qual o tamanho da pizza desejada: ")
         tam.append(tamanho)
         cont = int(input("| [1]Sim\n| [2]Não\n| Mais algum pedido?"))
         if cont == 2:
             break
+
 
     import func.insert_sql as insert
     insert.fechando_pedido(pizza, tam, id_user)
