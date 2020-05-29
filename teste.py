@@ -1,4 +1,6 @@
 import sqlite3
+import include as inc
+
 
 db = sqlite3.connect("database/pizza.db")
 
@@ -13,7 +15,7 @@ cursor = db.cursor()
 #import sys
 #
 #sys.path.insert(1, "..")
-
+"""
 import pandas as pd
 
 lista = {'nome': ['samuel', 'maria'],
@@ -23,3 +25,4 @@ lista = {'nome': ['samuel', 'maria'],
 listaDF = pd.DataFrame(lista)
 
 print(listaDF)
+"""

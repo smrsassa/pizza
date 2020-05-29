@@ -11,11 +11,11 @@ import include as inc
 
 inc.msg.cabecalho()
 
-#Mds python não tem switch?????
 while True:
-    #menu principal
+    # menu principal
     index_opc = inc.msg.index_menu()
 
+    # Atendimento
     if index_opc == 1:
 
         tel = inc.msg.atendimento_index()
@@ -27,7 +27,7 @@ while True:
         else:
             inc.msg.cadastra_cliente()
 
-
+    # Pedidos
     elif index_opc == 2:
 
         opc = inc.msg.pedido()
@@ -40,6 +40,7 @@ while True:
         else:
             pass
 
+    #Produto / Clientes
     elif index_opc == 3:
 
         opc = inc.msg.produto()
@@ -57,6 +58,7 @@ while True:
         else:
             pass
 
+    # Sair
     else:
 
         exit()

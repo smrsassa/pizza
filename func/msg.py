@@ -66,11 +66,14 @@ def cadastra_cliente():
 
 
 def pedido_index(id_user):
+
     pizza = []
     tam = []
+    metade = []
 
-    string1 = "itens_pedido.id_ped = pedido.id_ped and pedido.id_user = {} and ".format(id_user)
-    string2 = "itens_pedido.id_pizza = pizza.id_pizza ORDER BY item DESC LIMIT 3"
+    string1 = "itens_pedido.id_ped = pedido.id_ped and " \
+              "itens_pedido.id_pizza = pizza.id_pizza or itens_pedido.id_metade = pizza.id_pizza and "
+    string2 = "pedido.id_user = {} ORDER BY item DESC LIMIT 3".format(id_user)
     string = string1 + string2
     data.cursor.execute("SELECT pizza.nome_pizza from itens_pedido, pedido, user, pizza WHERE " + string)
     pedido = data.cursor.fetchall()
@@ -94,13 +97,25 @@ def pedido_index(id_user):
         pizza.append(idPizza)
         tamanho = input("| [1]Normal\n| [2]Media\n| [3]Grande\n| [4]Gigante\n| Qual o tamanho da pizza desejada: ")
         tam.append(tamanho)
+
+        opc_metade = int(input("| [1]Inteira\n| [2]Metade\n| Essa pizza é inteira ou metade? "))
+        if opc_metade == 2:
+            id_metade = input("| ID da outra metade da pizza: ")
+            valida = select.valida_pizza(id_metade)
+            while not valida:
+                id_metade = input("| ID invalido, pizza inativada: ")
+                valida = select.valida_pizza(id_metade)
+            metade.append(id_metade)
+        else:
+            metade.append(0)
+
         cont = int(input("| [1]Sim\n| [2]Não\n| Mais algum pedido?"))
         if cont == 2:
             break
 
 
     import func.insert_sql as insert
-    insert.fechando_pedido(pizza, tam, id_user)
+    insert.fechando_pedido(pizza, tam, id_user, metade)
 
 
 # ====== Pedidos =================================================
