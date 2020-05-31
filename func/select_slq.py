@@ -9,7 +9,7 @@ import database.db as data
 
 #====== Atendimento =================================================
 def procura_cliente(tel):
-    data.cursor.execute('SELECT * from user WHERE tel_cel like "%{}%"'.format(tel))
+    data.cursor.execute('SELECT * from user WHERE tel_cel like "%{}%" or tel_fixo like "%{}%"'.format(tel, tel))
     num_row = data.cursor.fetchone()
     if num_row is None:
         return False
@@ -101,16 +101,20 @@ def ultimos_pedidos(data_asd):
             tam = "Gigante"
         tamanho.append(tam)
 
-    pedidosDIC = {'Pedido': id_ped,
-                  'Cliente': nome,
-                  'Hora Pedido': hora,
-                  'Valor': total,
-                  'Pizza': pizza,
-                  'Tamanho': tamanho}
+    if len(id_ped) >= 1:
+        pedidosDIC = {'Pedido': id_ped,
+                      'Cliente': nome,
+                      'Hora Pedido': hora,
+                      'Valor': total,
+                      'Pizza': pizza,
+                      'Tamanho': tamanho}
 
-    pedidosDF = pd.DataFrame(pedidosDIC)
+        pedidosDF = pd.DataFrame(pedidosDIC)
 
-    print(pedidosDF)
+        print(pedidosDF)
+    
+    else :
+        print("Sem pedidos nesse dia.")
 
     getChar = input("Aperte Enter para continuar...")
 
@@ -137,13 +141,16 @@ def vendas():
         elif row[2] == 4:
             tamanhos.append('Gigante')
 
+    if len(pizza) >= 1:
+        vendidosDIC = {'Pizza:': pizza,
+                       'Vendas': vendidos,
+                       'Tamanhos': tamanhos}
 
-    vendidosDIC = {'Pizza:': pizza,
-                   'Vendas': vendidos,
-                   'Tamanhos': tamanhos}
+        vendidosDF = pd.DataFrame(vendidosDIC)
 
-    vendidosDF = pd.DataFrame(vendidosDIC)
+        print(vendidosDF)
 
-    print(vendidosDF)
+    else:
+        print("Sem vendas para listar.")
 
     getChar = input("Aperte Enter para continuar...")

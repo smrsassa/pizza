@@ -25,6 +25,7 @@ def cabecalho():
 
 
 def index_menu():
+    cls_clear()
     print("|" + "==" * 19 + "|")
     print("| [1] Atendimento")
     print("| [2] Pedidos")
@@ -66,7 +67,7 @@ def cadastra_cliente():
 
 
 def pedido_index(id_user):
-
+    cls_clear()
     pizza = []
     tam = []
     metade = []
@@ -121,6 +122,7 @@ def pedido_index(id_user):
 # ====== Pedidos =================================================
 
 def pedido():
+    cls_clear()
     print("|" + "==" * 19 + "|")
     print("| [1] Pedidos em aberto:")
     print("| [2] Ultimos Pedidos: ")
@@ -171,6 +173,7 @@ def data_pedido():
 # ====== Produtos =================================================
 
 def produto():
+    cls_clear()
     print("|" + "==" * 19 + "|")
     print("| [1] Inserir pizza")
     print("| [2] Editar pizza")

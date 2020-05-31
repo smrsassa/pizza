@@ -8,8 +8,11 @@ a partir de funções
 """
 
 import include as inc
+from time import sleep
+
 
 inc.msg.cabecalho()
+sleep(3)
 
 while True:
     # menu principal
@@ -61,4 +64,4 @@ while True:
     # Sair
     else:
 
-        exit()
+        break
